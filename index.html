@@ -57,7 +57,7 @@
 
     <script>
         // 🔗 วาง Web App URL ที่ได้จาก Google Apps Script ที่นี่
-        const GAS_API_URL = "https://script.google.com/macros/s/AKfycbx3u14yUmM4FryW8xB3FcDTion4vX6DZCJXRhHs30SxTaJ0myac1U0wWaV6XcrTfcYOOw/exec";
+        const GAS_API_URL = "https://script.google.com/macros/s/AKfycbxJMVFMTdzsTQWn1HQqpuruvYnxa1FGkevkiKurSano73NtitUY2UxFqIVfoytfMHkncw/exec";
 
         // กำหนดรายการโต๊ะสีพิเศษตามภาพต้นฉบับ
         const blueTables = [13, 14, 15, 16, 30, 31, 45, 46, 60, 61, 76, 91, 106, 121, 122, 123, 137, 138];
@@ -176,40 +176,26 @@
         }
 
         function openModal(table) {
-            const safeTableNo = escapeHtml(table.Table_No);
-            const safeZone = escapeHtml(table.Zone || '-');
-            const safeStatus = escapeHtml(table.Status || 'Available');
-            const safeCustomer = escapeHtml(table.Customer_Name || '-');
-            const safeSeats = escapeHtml(table.Seats || '10');
-            const safeNote = escapeHtml(table.Note || '-');
+    const safeTableNo = escapeHtml(table.Table_No);
+    const safeStatus = escapeHtml(table.Status || 'Available');
+    const safeCustomer = escapeHtml(table.Customer_Name || '-');
 
-            document.getElementById('modal-title').innerText = `รายละเอียด โต๊ะหมายเลข ${safeTableNo}`;
-            const body = document.getElementById('modal-body');
-            
-            body.innerHTML = `
-                <div class="flex justify-between border-b pb-1">
-                    <span class="font-semibold">สถานะ:</span>
-                    <span class="font-bold text-amber-800">${safeStatus}</span>
-                </div>
-                <div class="flex justify-between border-b pb-1">
-                    <span class="font-semibold">ชื่อผู้จอง / หมายเหตุ:</span>
-                    <span>${safeCustomer}</span>
-                </div>
-                <div class="flex justify-between border-b pb-1">
-                    <span class="font-semibold">โซน:</span>
-                    <span>${safeZone}</span>
-                </div>
-                <div class="flex justify-between border-b pb-1">
-                    <span class="font-semibold">จำนวนที่นั่ง:</span>
-                    <span>${safeSeats} ที่นั่ง</span>
-                </div>
-                <div class="flex justify-between border-b pb-1">
-                    <span class="font-semibold">รายละเอียดเพิ่มเติม:</span>
-                    <span>${safeNote}</span>
-                </div>
-            `;
-            document.getElementById('table-modal').classList.remove('hidden');
-        }
+    document.getElementById('modal-title').innerText = `โต๊ะหมายเลข ${safeTableNo}`;
+    const body = document.getElementById('modal-body');
+    
+    body.innerHTML = `
+        <div class="flex justify-between border-b pb-2 mb-2">
+            <span class="font-semibold text-gray-700">สถานะ:</span>
+            <span class="font-bold text-amber-800">${safeStatus}</span>
+        </div>
+        <div class="flex justify-between border-b pb-2">
+            <span class="font-semibold text-gray-700">ชื่อผู้จอง / หมายเหตุ:</span>
+            <span class="font-bold text-gray-900">${safeCustomer}</span>
+        </div>
+    `;
+    document.getElementById('table-modal').classList.remove('hidden');
+}
+        
 
         function closeModal() {
             document.getElementById('table-modal').classList.add('hidden');
