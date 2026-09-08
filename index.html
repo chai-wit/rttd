@@ -3,77 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ระบบผังโต๊ะจีน Real-time (ผังโต๊ะตามภาพ)</title>
-    <!-- Tailwind CSS CDN -->
+    <title>ผังโต๊ะจีน คืนสู่เหย้าชาวเทา-แดง ประจำปี 2569</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Kanit', sans-serif; }
     </style>
 </head>
-<body class="bg-gray-100 min-h-screen p-4 md:p-8">
+<body class="bg-gray-100 min-h-screen p-2 md:p-6">
 
-    <div class="max-w-7xl mx-auto">
-        <!-- Header & Stats Summary -->
-        <header class="bg-white rounded-xl shadow-md p-6 mb-6 flex flex-col md:flex-row justify-between items-center gap-4 border border-gray-200">
-            <div>
-                <h1 class="text-2xl md:text-3xl font-bold text-gray-800">แผนผังสถานะการจองโต๊ะจีน</h1>
-                <p class="text-sm text-gray-500 mt-1">อัปเดตข้อมูล Real-time จาก Google Sheet (ตามผังภาพ)</p>
-            </div>
+    <div class="max-w-[1600px] mx-auto bg-white rounded-xl shadow-lg p-4 md:p-6 border border-gray-200 overflow-x-auto">
+        
+        <!-- Header Title -->
+        <div class="text-center mb-4">
+            <h1 class="text-xl md:text-2xl font-bold text-gray-900">ผังโต๊ะจีน</h1>
+            <h2 class="text-base md:text-lg font-semibold text-gray-800">งานราตรี "คืนสู่เหย้าชาวเทา-แดง" ประจำปี 2569</h2>
+            <p class="text-sm text-gray-600">ณ ร.ร.ชัยบาดาลวิทยา อำเภอชัยบาดาล จังหวัดลพบุรี</p>
+        </div>
+
+        <!-- Layout Container -->
+        <div class="min-w-[1200px]">
             
-            <!-- Summary Badges -->
-            <div class="flex flex-wrap gap-3 text-sm font-semibold">
-                <div class="bg-amber-100 text-amber-900 px-3 py-1.5 rounded-lg flex items-center gap-2 border border-amber-400">
-                    <span class="w-3 h-3 bg-amber-500 rounded-full"></span>
-                    ว่าง: <span id="count-available">0</span>
-                </div>
-                <div class="bg-sky-100 text-sky-900 px-3 py-1.5 rounded-lg flex items-center gap-2 border border-sky-400">
-                    <span class="w-3 h-3 bg-sky-600 rounded-full"></span>
-                     Reserved: <span id="count-reserved">0</span>
-                </div>
-                <div class="bg-red-100 text-red-900 px-3 py-1.5 rounded-lg flex items-center gap-2 border border-red-400">
-                    <span class="w-3 h-3 bg-red-600 rounded-full"></span>
-                    Occupied: <span id="count-occupied">0</span>
-                </div>
-                <div class="bg-emerald-100 text-emerald-900 px-3 py-1.5 rounded-lg flex items-center gap-2 border border-emerald-400">
-                    <span class="w-3 h-3 bg-emerald-600 rounded-full"></span>
-                    VIP: <span id="count-vip">0</span>
-                </div>
-            </div>
-        </header>
-
-        <!-- Table Layout Container (ซับซ้อนตามภาพ) -->
-        <main id="table-layout" class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
-            <!-- หัวตาราง 1-8 -->
-            <div class="grid grid-cols-12 gap-x-2 gap-y-4 text-center font-bold text-gray-700 mb-6">
-                <div class="col-start-1 col-span-3 grid grid-cols-3">
-                    <div class="p-2 border-b-2 border-gray-300">1</div>
-                    <div class="p-2 border-b-2 border-gray-300">2</div>
-                    <div class="p-2 border-b-2 border-gray-300">3</div>
-                </div>
-                <div class="col-start-5 col-span-5 grid grid-cols-5">
-                    <div class="p-2 border-b-2 border-gray-300">4</div>
-                    <div class="p-2 border-b-2 border-gray-300">5</div>
-                    <div class="p-2 border-b-2 border-gray-300">6</div>
-                    <div class="p-2 border-b-2 border-gray-300">7</div>
-                    <div class="p-2 border-b-2 border-gray-300">8</div>
+            <!-- Stage Bar (เวทีดนตรี-การแสดง) -->
+            <div class="grid grid-cols-[30px_repeat(16,1fr)] gap-1 mb-4">
+                <div class="col-start-5 col-span-9 bg-sky-200 border-2 border-sky-600 text-sky-950 font-bold text-center py-1.5 rounded shadow-sm text-sm">
+                    เวทีดนตรี-การแสดง
                 </div>
             </div>
 
-            <!-- โครงสร้าง Grid ของผังโต๊ะตามภาพ -->
-            <div id="table-grid" class="grid grid-cols-12 gap-x-2 gap-y-2">
-                <!-- Javascript จะสร้างโครงสร้าง Grid และเติมโต๊ะลงไปตรงนี้ -->
+            <!-- Column Numbers (1 to 15) -->
+            <div class="grid grid-cols-[30px_repeat(16,1fr)] gap-1 mb-1 text-center font-bold text-gray-700 text-xs md:text-sm">
+                <div></div> <!-- Empty for row header -->
+                <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div><div>15</div><div></div>
             </div>
-        </main>
+
+            <!-- Table Grid 10 Rows x 16 Columns -->
+            <div id="table-grid" class="grid grid-cols-[30px_repeat(16,1fr)] gap-1">
+                <!-- JavaScript จะเรนเดอร์ผังโต๊ะตรงนี้ -->
+            </div>
+        </div>
     </div>
 
-    <!-- Table Details Modal (คงเดิม) -->
+    <!-- Table Details Modal -->
     <div id="table-modal" class="fixed inset-0 bg-black/50 hidden backdrop-blur-sm flex justify-center items-center p-4 z-50">
-        <div class="bg-white rounded-xl max-w-md w-full p-6 shadow-2xl relative border border-gray-200 animate-fade-in">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 font-bold text-xl">&times;</button>
-            <h3 id="modal-title" class="text-xl font-bold text-gray-800 border-b pb-2 mb-4">ข้อมูลโต๊ะ</h3>
-            <div id="modal-body" class="space-y-3 text-sm text-gray-600">
-                <!-- ข้อมูลรายละเอียดจะถูกใส่ที่นี่ -->
+        <div class="bg-white rounded-xl max-w-sm w-full p-5 shadow-2xl relative border border-gray-200">
+            <button onclick="closeModal()" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600 font-bold text-lg">&times;</button>
+            <h3 id="modal-title" class="text-lg font-bold text-gray-800 border-b pb-2 mb-3">ข้อมูลโต๊ะ</h3>
+            <div id="modal-body" class="space-y-2 text-xs text-gray-600">
+                <!-- ข้อมูลรายละเอียดจะแสดงที่นี่ -->
             </div>
         </div>
     </div>
@@ -82,24 +59,23 @@
         // 🔗 วาง Web App URL ที่ได้จาก Google Apps Script ที่นี่
         const GAS_API_URL = "https://script.google.com/macros/s/AKfycbx3u14yUmM4FryW8xB3FcDTion4vX6DZCJXRhHs30SxTaJ0myac1U0wWaV6XcrTfcYOOw/exec";
 
-        // สีสถานะตามภาพ (VIP-เขียว, Reserved-ฟ้า, Occupied-น้ำตาลเข้ม, Available-น้ำตาลอ่อน)
-        const statusColors = {
-            'Available': 'bg-amber-100 hover:bg-amber-200 text-amber-900 border-amber-600',
-            'Reserved': 'bg-sky-100 hover:bg-sky-200 text-sky-900 border-sky-600',
-            'Occupied': 'bg-red-200 hover:bg-red-300 text-red-900 border-red-700',
-            'VIP': 'bg-emerald-100 hover:bg-emerald-200 text-emerald-900 border-emerald-700',
-            // สีพิเศษสำหรับโต๊ะที่มีหมายเลขแต่ไม่มีสถานะชัดเจนในภาพ
-            'Default': 'bg-gray-100 hover:bg-gray-200 text-gray-800 border-gray-400'
+        // กำหนดรายการโต๊ะสีพิเศษตามภาพต้นฉบับ
+        const blueTables = [13, 14, 15, 16, 30, 31, 45, 46, 60, 61, 76, 91, 106, 121, 122, 123, 137, 138];
+        const greenTables = [8, 23, 38, 53, 68, 83];
+        const redTables = [136];
+
+        // ข้อความกำกับพิเศษประจำโต๊ะตามภาพ
+        const specialLabels = {
+            8: "8<br><span class='text-[9px]'>VIP-1</span>",
+            23: "23<br><span class='text-[9px]'>VIP-2</span>",
+            38: "38<br><span class='text-[9px]'>VIP-3</span>",
+            53: "53<br><span class='text-[9px]'>VIP-4</span>",
+            68: "68<br><span class='text-[9px]'>ครูบำนาญ</span>",
+            83: "83<br><span class='text-[9px]'>ครูบำนาญ</span>",
+            136: "136<br><span class='text-[9px]'>อปพร</span>"
         };
 
-        const statusTextTH = {
-            'Available': 'ว่าง',
-            'Reserved': ' Reserved ',
-            'Occupied': 'Occupied',
-            'VIP': 'VIP'
-        };
-
-        // 🛡️ Security Helper: ป้องกัน XSS
+        // 🛡️ Security Helper (XSS Protection)
         function escapeHtml(str) {
             if (str === null || str === undefined) return '';
             return String(str)
@@ -112,178 +88,124 @@
 
         async function fetchTableData() {
             try {
-                // สำหรับทดสอบ: ใช้ข้อมูลจำลองเพื่อแสดงผังตามภาพก่อน
-                const json = {
-                    status: "success",
-                    data: [
-                        { Table_No: 1, Status: "Reserved", Zone: "Top Zone" }, { Table_No: 16, Status: "Reserved", Zone: "Top Zone" }, { Table_No: 31, Status: "Reserved", Zone: "Top Zone" }, { Table_No: 46, Status: "Reserved", Zone: "Top Zone" }, { Table_No: 61, Status: "Reserved", Zone: "Top Zone" }, { Table_No: 76, Status: "Reserved", Zone: "Top Zone" }, { Table_No: 91, Status: "Reserved", Zone: "Top Zone" },
-                        { Table_No: 106, Status: "Occupied", Customer_Name: "ครูประเสริฐ" }, { Table_No: 121, Status: "VIP", Customer_Name: "ครูชุติ (VIP-3)" }, { Table_No: 136, Status: "VIP", Customer_Name: "คุณจารุวรรณ (VIP-2)" },
-                        { Table_No: 107, Status: "Occupied", Customer_Name: "ครูนิพาภา" }, { Table_No: 122, Status: "Occupied", Customer_Name: "คุณนลินทิพย์" }, { Table_No: 137, Status: "Occupied", Customer_Name: "คุณประพันธ์" },
-                        { Table_No: 108, Status: "Occupied", Customer_Name: "ร้านดงพญา" }, { Table_No: 123, Status: "Occupied", Customer_Name: "คุณจิราพร" }, { Table_No: 138, Status: "Occupied", Customer_Name: "คุณนิลุบล" },
-                        { Table_No: 32, Status: "Reserved", Customer_Name: "Reserved" }, { Table_No: 17, Status: "Occupied", Customer_Name: "Reserved" }, { Table_No: 2, Status: "Reserved", Customer_Name: "Reserved" },
-                        { Table_No: 8, Status: "VIP", Customer_Name: "VIP-1" }, { Table_No: 23, Status: "VIP", Customer_Name: "VIP-2" }, { Table_No: 38, Status: "VIP", Customer_Name: "VIP-3" }, { Table_No: 53, Status: "VIP", Customer_Name: "VIP-4" },
-                        { Table_No: 9, Status: "Occupied", Zone: "Bottom Zone" }, { Table_No: 24, Status: "Occupied", Zone: "Bottom Zone" }, { Table_No: 39, Status: "Occupied", Zone: "Bottom Zone" }, { Table_No: 54, Status: "Occupied", Zone: "Bottom Zone" }, { Table_No: 69, Status: "Occupied", Zone: "Bottom Zone" }, { Table_No: 84, Status: "Occupied", Zone: "Bottom Zone" },
-                        // เติมโต๊ะอื่นๆ จำลองตามภาพ
-                        { Table_No: 92, Status: "Reserved" }, { Table_No: 77, Status: "Occupied" }, { Table_No: 62, Status: "Occupied" }, { Table_No: 47, Status: "Occupied" },
-                        { Table_No: 112, Status: "Reserved" }, { Table_No: 127, Status: "Occupied" }, { Table_No: 142, Status: "Occupied" }, { Table_No: 141, Status: "Occupied" },
-                        { Table_No: 150, Status: "Occupied" }, { Table_No: 135, Status: "Occupied" }, { Table_No: 120, Status: "Available" },
-                    ]
-                };
-
-                // หากต้องการใช้ URL จริง ให้ปลดคอมเมนต์บรรทัดล่างนี้:
-                // const response = await fetch(GAS_API_URL);
-                // const json = await response.json();
-
+                const response = await fetch(GAS_API_URL);
+                const json = await response.json();
                 if (json.status === "success") {
-                    renderTables(json.data);
-                    updateSummaryStats(json.data);
+                    renderGrid(json.data);
                 }
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         }
 
-        function renderTables(tables) {
+        function renderGrid(tableDataList) {
             const grid = document.getElementById('table-grid');
-            grid.innerHTML = ''; // เคลียร์ของเก่า
+            grid.innerHTML = '';
 
-            // สร้างโครงสร้าง Grid ตามผังภาพ
-            const layoutStructure = [
-                // โซนบน: T1, T16, T31, T46, T61, T76, T91
-                { row: 1, cols: { 2: 91, 3: 76, 4: 61, 5: 46, 6: 31, 7: 16, 8: 1 } },
-                // ผังโต๊ะกลุ่มซ้าย (T106-T150 เรียงขึ้น) และกลุ่มขวา (T92-T105 เรียงลงตามภาพ)
-                // ฉันจะสร้าง 15 แถวตามผังหลักในภาพ
-                ...Array.from({ length: 15 }, (_, i) => ({
-                    row: i + 2,
-                    cols: {
-                        // กลุ่มซ้าย 1-3
-                        1: 136 + i,
-                        2: 121 + i,
-                        3: 106 + i,
-                        // กลุ่มขวา 4-8 (จำลองการเรียงตามภาพ - หมายเลขโต๊ะในภาพสับสน ฉันจะใช้หมายเลขที่เหมาะสมเพื่อให้เต็ม Grid และสอดคล้องกับภาพ)
-                        5: 92 + i,
-                        6: 77 + i,
-                        7: 62 + i,
-                        8: 47 + i,
-                        9: 32 + i,
-                    }
-                })),
-                // โซนล่าง: T9, T24, T39, T54, T69, T84
-                { row: 17, cols: { 3: 84, 4: 69, 5: 54, 6: 39, 7: 24, 8: 9 } },
-            ];
+            // สร้าง Map ข้อมูลโต๊ะ
+            const dataMap = {};
+            tableDataList.forEach(item => {
+                dataMap[item.Table_No] = item;
+            });
 
-            // สร้าง Table Object เพื่อค้นหาข้อมูลได้ง่าย
-            const tableMap = {};
-            tables.forEach(table => { tableMap[table.Table_No] = table; });
+            // สร้างแถวที่ 1 ถึง 10
+            for (let r = 1; r <= 10; r++) {
+                
+                // เลขแถวฝั่งซ้าย
+                const rowLabel = document.createElement('div');
+                rowLabel.className = "flex items-center justify-center font-bold text-gray-700 text-sm";
+                rowLabel.innerText = r;
+                grid.appendChild(rowLabel);
 
-            layoutStructure.forEach(rowData => {
-                // สร้าง div สำหรับแถว (ใช้วิธีcol-start ใน grid หลัก)
-                Object.entries(rowData.cols).forEach(([gridCol, tableNo]) => {
-                    const tableData = tableMap[tableNo];
-                    
-                    // ปรับแต่งสีสถานะตามภาพ (เนื่องจากข้อมูลจำลองมีไม่ครบ 1-150 ฉันจะใช้สี Default หากไม่พบข้อมูล)
-                    let statusKey = tableData ? tableData.Status : 'Default';
-                    const colorClass = statusColors[statusKey] || statusColors.Default;
-                    
-                    const card = document.createElement('div');
-                    // จัดตำแหน่งด้วย col-start
-                    card.className = `${colorClass} col-start-${parseInt(gridCol) + (parseInt(gridCol) >= 5 ? 0 : 0)} col-span-1 border-b-4 rounded-xl p-3 flex flex-col justify-between items-center cursor-pointer transition-all duration-200 transform hover:-translate-y-1 shadow-sm aspect-square border`;
-                    
-                    if (tableData) {
-                        card.onclick = () => openModal(tableData);
-                        
-                        const safeTableNo = escapeHtml(tableData.Table_No);
-                        const safeZone = escapeHtml(tableData.Zone || '-');
-                        // หากมี Customer_Name หรือ Note จำลองในภาพ ให้แสดงผล (ใช้ escapeHtml เสมอ 🔒)
-                        const safeName = escapeHtml(tableData.Customer_Name || '-');
+                // กำหนดหมายเลขโต๊ะประจำแถว 1-10
+                for (let c = 1; c <= 16; c++) {
+                    let tNum = null;
 
-                        card.innerHTML = `
-                            <span class="text-xs font-semibold opacity-80">${safeZone}</span>
-                            <span class="text-xl font-bold">โต๊ะ ${safeTableNo}</span>
-                            <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-black/10">
-                                ${statusTextTH[tableData.Status] || tableData.Status}
-                            </span>
-                        `;
+                    if (r <= 6) {
+                        // แถว 1-6 มี 15 โต๊ะ
+                        if (c <= 15) tNum = (r - 1) * 15 + c;
                     } else {
-                        // โต๊ะที่มีหมายเลขแต่ไม่มีข้อมูลสถานะใน JSON
-                        card.className += ' cursor-default opacity-60';
-                        card.innerHTML = `
-                            <span class="text-xl font-bold mt-4">โต๊ะ ${tableNo}</span>
-                            <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-black/10 mt-auto">
-                                ${tableNo <= 150 ? ' Available ' : 'Reserved'}
-                            </span>
-                        `;
+                        // แถว 7-10 เว้นช่องทางเดินที่ Column 8
+                        if (c <= 7) {
+                            tNum = 90 + (r - 7) * 15 + c;
+                        } else if (c === 8) {
+                            tNum = null; // ช่องทางเดิน (Walkway)
+                        } else if (c <= 16) {
+                            tNum = 90 + (r - 7) * 15 + (c - 1);
+                        }
                     }
+
+                    // เรนเดอร์ช่องว่างทางเดินหรือช่องท้ายแถว
+                    if (tNum === null || tNum > 150) {
+                        const emptyCell = document.createElement('div');
+                        emptyCell.className = c === 8 && r >= 7 ? "bg-gray-50 border border-dashed border-gray-200 rounded" : "";
+                        grid.appendChild(emptyCell);
+                        continue;
+                    }
+
+                    const itemData = dataMap[tNum] || { Table_No: tNum };
+                    
+                    // กำหนดโทนสีการ์ดตามภาพต้นฉบับ
+                    let headerColor = "bg-[#7a3b11] text-white"; // สีน้ำตาลมาตรฐาน
+                    if (greenTables.includes(tNum)) headerColor = "bg-[#2d6a30] text-white"; // VIP / ครูบำนาญ
+                    else if (blueTables.includes(tNum)) headerColor = "bg-[#1d3557] text-white"; // ครู ชบ.
+                    else if (redTables.includes(tNum)) headerColor = "bg-[#9b111e] text-white"; // อปพร
+
+                    const card = document.createElement('div');
+                    card.className = "bg-[#fdf8e7] border border-amber-800/40 rounded flex flex-col justify-between overflow-hidden shadow-sm cursor-pointer hover:border-amber-900 transition-all aspect-[4/3] min-h-[36px]";
+                    card.onclick = () => openModal(itemData);
+
+                    // ข้อความส่วนหัว
+                    const headerText = specialLabels[tNum] || tNum;
+                    const safeName = escapeHtml(itemData.Customer_Name || itemData.Note || '');
+
+                    card.innerHTML = `
+                        <div class="${headerColor} text-center font-bold text-xs py-0.5 leading-tight border-b border-black/10">
+                            ${headerText}
+                        </div>
+                        <div class="p-0.5 text-center flex-1 flex items-center justify-center">
+                            <span class="text-[9px] leading-tight text-gray-800 font-medium line-clamp-2">
+                                ${safeName}
+                            </span>
+                        </div>
+                    `;
+
                     grid.appendChild(card);
-                });
-            });
-
-            // เพิ่มโต๊ะ VIP และ Reserved พิเศษตามภาพ (ที่ไม่อยู่ใน Grid หลัก)
-            const specialTables = [
-                { tableNo: 8, status: 'VIP', gridCol: 11 },
-                { tableNo: 23, status: 'VIP', gridCol: 10 },
-                { tableNo: 38, status: 'VIP', gridCol: 9 },
-                { tableNo: 53, status: 'VIP', gridCol: 8 },
-            ];
-
-            specialTables.forEach(special => {
-                const tableData = tableMap[special.tableNo] || { Table_No: special.tableNo, Status: special.status };
-                const colorClass = statusColors[tableData.Status] || statusColors.VIP;
-                const card = document.createElement('div');
-                card.className = `${colorClass} col-start-${special.gridCol} col-span-1 border-b-4 rounded-xl p-3 flex flex-col justify-between items-center cursor-pointer transition-all duration-200 transform hover:-translate-y-1 shadow-sm aspect-square border`;
-                card.onclick = () => openModal(tableData);
-                card.innerHTML = `
-                    <span class="text-xl font-bold mt-4">${special.status === 'VIP' ? `VIP-${special.tableNo === 8 ? 1 : special.tableNo === 23 ? 2 : special.tableNo === 38 ? 3 : 4}` : `โต๊ะ ${special.tableNo}`}</span>
-                    <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-black/10 mt-auto">
-                        ${special.status}
-                    </span>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        function updateSummaryStats(tables) {
-            const counts = { Available: 0, Reserved: 0, Occupied: 0, VIP: 0 };
-            tables.forEach(t => { if(counts[t.Status] !== undefined) counts[t.Status]++; });
-
-            document.getElementById('count-available').innerText = counts.Available;
-            document.getElementById('count-reserved').innerText = counts.Reserved;
-            document.getElementById('count-occupied').innerText = counts.Occupied;
-            document.getElementById('count-vip').innerText = counts.VIP;
+                }
+            }
         }
 
         function openModal(table) {
             const safeTableNo = escapeHtml(table.Table_No);
             const safeZone = escapeHtml(table.Zone || '-');
-            const safeStatusTH = escapeHtml(statusTextTH[table.Status] || table.Status);
-            const safeCustomer = escapeHtml(table.Customer_Name || '-'); // 🔒 ปลอดภัยด้วย data masking ใน GAS และ escapeHtml
+            const safeStatus = escapeHtml(table.Status || 'Available');
+            const safeCustomer = escapeHtml(table.Customer_Name || '-');
             const safeSeats = escapeHtml(table.Seats || '10');
             const safeNote = escapeHtml(table.Note || '-');
-            const safeUpdated = escapeHtml(table.Updated_At || '-');
 
-            document.getElementById('modal-title').innerText = `รายละเอียด โต๊ะหมายเลข ${safeTableNo} (${safeZone})`;
+            document.getElementById('modal-title').innerText = `รายละเอียด โต๊ะหมายเลข ${safeTableNo}`;
             const body = document.getElementById('modal-body');
             
             body.innerHTML = `
                 <div class="flex justify-between border-b pb-1">
                     <span class="font-semibold">สถานะ:</span>
-                    <span class="font-bold text-${table.Status === 'VIP' ? 'emerald' : table.Status === 'Reserved' ? 'sky' : table.Status === 'Occupied' ? 'red' : 'amber'}-700">${safeStatusTH}</span>
+                    <span class="font-bold text-amber-800">${safeStatus}</span>
                 </div>
                 <div class="flex justify-between border-b pb-1">
-                    <span class="font-semibold">ชื่อผู้จอง:</span>
+                    <span class="font-semibold">ชื่อผู้จอง / หมายเหตุ:</span>
                     <span>${safeCustomer}</span>
+                </div>
+                <div class="flex justify-between border-b pb-1">
+                    <span class="font-semibold">โซน:</span>
+                    <span>${safeZone}</span>
                 </div>
                 <div class="flex justify-between border-b pb-1">
                     <span class="font-semibold">จำนวนที่นั่ง:</span>
                     <span>${safeSeats} ที่นั่ง</span>
                 </div>
                 <div class="flex justify-between border-b pb-1">
-                    <span class="font-semibold">หมายเหตุ:</span>
+                    <span class="font-semibold">รายละเอียดเพิ่มเติม:</span>
                     <span>${safeNote}</span>
-                </div>
-                <div class="flex justify-between text-xs text-gray-400 pt-2 border-t mt-4">
-                    <span>อัปเดตล่าสุด:</span>
-                    <span>${safeUpdated}</span>
                 </div>
             `;
             document.getElementById('table-modal').classList.remove('hidden');
@@ -294,7 +216,6 @@
         }
 
         fetchTableData();
-        // ปรับเวลา Polling เป็นทุกๆ 5 วินาที เพื่อลด Rate Limit 🔒
         setInterval(fetchTableData, 5000);
     </script>
 </body>
