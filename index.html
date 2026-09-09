@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Kanit', sans-serif; }
-        /* ปรับขนาด Grid ให้ยืดหยุ่นพอดีหน้าจอ ไม่ล้นขอบ */
+        /* ปรับขนาด Grid ให้ยืดหยุ่นพอดีหน้าจอ */
         .custom-zone-grid {
             display: grid;
             grid-template-columns: 28px repeat(8, minmax(0, 1fr));
@@ -16,7 +16,7 @@
         }
         @media (min-width: 768px) {
             .custom-zone-grid {
-                grid-template-columns: 32px repeat(8, minmax(0, 1fr));
+                grid-template-columns: 34px repeat(8, minmax(0, 1fr));
                 gap: 6px;
             }
         }
@@ -27,7 +27,7 @@
     <!-- Main Container Card -->
     <div class="max-w-[1700px] mx-auto bg-white rounded-xl shadow-lg p-3 md:p-6 border border-gray-200">
         
-        <!-- Header Title & Logo (จัดกึ่งกลางหน้าจอ 100% เสมอ) -->
+        <!-- Header Title & Logo -->
         <div class="text-center mb-6 w-full max-w-4xl mx-auto px-2">
             <img src="https://www.chaiwit.ac.th/web/wp-content/uploads/2022/06/chaiwitlogo.png" 
                  alt="โลโก้โรงเรียนชัยบาดาลวิทยา" 
@@ -37,57 +37,51 @@
             <p class="text-sm text-gray-600">ณ ร.ร.ชัยบาดาลวิทยา อำเภอชัยบาดาล จังหวัดลพบุรี</p>
         </div>
 
-        <!-- Layout Container (ปรับ responsive ไม่ให้ดันขอบจอออกไป) -->
+        <!-- Layout Container -->
         <div class="flex flex-col lg:flex-row gap-6 lg:gap-8 justify-center items-start w-full">
             
             <!-- ⬅️ โซนฝั่งซ้าย (คอลัมน์ 1 - 8) -->
             <div class="w-full lg:w-1/2 max-w-[750px] mx-auto">
-                <!-- Stage Left -->
                 <div class="custom-zone-grid mb-2">
                     <div style="grid-column: 2 / span 8;" class="bg-sky-200 border-2 border-sky-600 text-sky-950 font-bold text-center py-1.5 md:py-2 rounded shadow-sm text-xs md:text-sm">
                         เวทีดนตรี-การแสดง (ฝั่งซ้าย)
                     </div>
                 </div>
 
-                <!-- Column Headers Left (1 to 8) -->
                 <div class="custom-zone-grid mb-1 text-center font-bold text-gray-700 text-xs md:text-sm">
                     <div></div>
                     <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div>
                 </div>
 
-                <!-- Left Grid -->
                 <div id="grid-left" class="custom-zone-grid"></div>
             </div>
 
             <!-- ➡️ โซนฝั่งขวา (คอลัมน์ 9 - 15) -->
             <div class="w-full lg:w-1/2 max-w-[750px] mx-auto">
-                <!-- Stage Right -->
                 <div class="custom-zone-grid mb-2">
                     <div style="grid-column: 2 / span 8;" class="bg-sky-200 border-2 border-sky-600 text-sky-950 font-bold text-center py-1.5 md:py-2 rounded shadow-sm text-xs md:text-sm">
                         เวทีดนตรี-การแสดง (ฝั่งขวา)
                     </div>
                 </div>
 
-                <!-- Column Headers Right (9 to 15) -->
                 <div class="custom-zone-grid mb-1 text-center font-bold text-gray-700 text-xs md:text-sm">
                     <div></div>
                     <div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div><div>15</div><div></div>
                 </div>
 
-                <!-- Right Grid -->
                 <div id="grid-right" class="custom-zone-grid"></div>
             </div>
 
         </div>
     </div>
 
-    <!-- 🖱️ Tooltip แสดงข้อมูลเมื่อเอาเมาส์ชี้ -->
+    <!-- 🖱️ Tooltip -->
     <div id="table-tooltip" class="fixed hidden pointer-events-none bg-gray-900/95 text-white text-xs rounded-lg p-3 shadow-xl z-50 border border-gray-700 min-w-[180px] backdrop-blur-sm transition-opacity duration-150">
         <div id="tooltip-title" class="font-bold border-b border-gray-700 pb-1.5 mb-1.5 text-amber-300 text-sm"></div>
         <div id="tooltip-body" class="space-y-1"></div>
     </div>
 
-    <!-- Table Details Modal (คลิกดูรายละเอียด) -->
+    <!-- Table Details Modal -->
     <div id="table-modal" class="fixed inset-0 bg-black/50 hidden backdrop-blur-sm flex justify-center items-center p-4 z-50">
         <div class="bg-white rounded-xl max-w-sm w-full p-5 shadow-2xl relative border border-gray-200">
             <button onclick="closeModal()" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600 font-bold text-xl">&times;</button>
@@ -97,18 +91,20 @@
     </div>
 
     <script>
+        // 🔗 URL ของ Google Apps Script API
         const GAS_API_URL = "https://script.google.com/macros/s/AKfycbxJMVFMTdzsTQWn1HQqpuruvYnxa1FGkevkiKurSano73NtitUY2UxFqIVfoytfMHkncw/exec";
 
         const blueTables = [13, 14, 15, 16, 30, 31, 45, 46, 60, 61, 76, 91, 106, 121, 122, 123, 137, 138];
         const greenTables = [8, 23, 38, 53, 68, 83];
 
+        // ข้อความพิเศษแสดงในช่องด้านล่างของโต๊ะ
         const specialLabels = {
-            8: "8<br><span class='text-[9px] md:text-[10px]'>VIP-1</span>",
-            23: "23<br><span class='text-[9px] md:text-[10px]'>VIP-2</span>",
-            38: "38<br><span class='text-[9px] md:text-[10px]'>VIP-3</span>",
-            53: "53<br><span class='text-[9px] md:text-[10px]'>VIP-4</span>",
-            68: "68<br><span class='text-[9px] md:text-[10px]'>ครูบำนาญ</span>",
-            83: "83<br><span class='text-[9px] md:text-[10px]'>ครูบำนาญ</span>"
+            8: "VIP-1",
+            23: "VIP-2",
+            38: "VIP-3",
+            53: "VIP-4",
+            68: "ครูบำนาญ",
+            83: "ครูบำนาญ"
         };
 
         function escapeHtml(str) {
@@ -130,6 +126,10 @@
 
             const itemData = dataMap[tNum] || { Table_No: tNum };
             const customerName = (itemData.Customer_Name || itemData.Note || '').trim();
+            const specialTag = specialLabels[tNum] || '';
+
+            // แสดงชื่อผู้จอง หากไม่มีชื่อจะแสดงคำว่า VIP / ครูบำนาญ ในช่องด้านล่างแทน
+            const displayBodyText = customerName || specialTag;
 
             // 🎨 ตั้งค่าสีธีม
             let headerStyle = "background-color: #7a3b11; color: #ffffff;";
@@ -142,28 +142,30 @@
                 headerStyle = "background-color: #1C4587; color: #ffffff;";
                 bodyStyle = "background-color: #CFE2F3; color: #000000;";
             } else if (greenTables.includes(tNum)) {
-                headerStyle = "background-color: #2d6a30; color: #ffffff;";
-                bodyStyle = "background-color: #fdf8e7; color: #1f2937;";
+                headerStyle = "background-color: #1b4d24; color: #ffffff;";
+                bodyStyle = "background-color: #286332; color: #ffffff;";
             }
 
             const card = document.createElement('div');
-            card.className = "border border-amber-800/30 rounded flex flex-col justify-between overflow-hidden shadow-sm cursor-pointer hover:border-amber-900 hover:shadow-md active:scale-95 transition-all min-h-[44px] md:min-h-[48px]";
+            // 🔍 ปรับความสูงขั้นต่ำจาก 44px/48px เป็น 48px/54px เพื่อรองรับฟอนต์ขนาดใหญ่ขึ้น
+            card.className = "border border-amber-800/30 rounded flex flex-col justify-between overflow-hidden shadow-sm cursor-pointer hover:border-amber-900 hover:shadow-md active:scale-95 transition-all min-h-[48px] md:min-h-[54px]";
             
             card.onmouseenter = (e) => showTooltip(e, itemData);
             card.onmousemove = (e) => updateTooltipPosition(e);
             card.onmouseleave = () => hideTooltip();
             card.onclick = () => openModal(itemData);
 
-            const headerText = specialLabels[tNum] || tNum;
-            const safeName = escapeHtml(customerName);
+            const safeBodyText = escapeHtml(displayBodyText);
 
             card.innerHTML = `
-                <div style="${headerStyle}" class="text-center font-bold text-[10px] md:text-[12px] py-0.5 leading-tight border-b border-black/10">
-                    ${headerText}
+                <!-- 🔍 เพิ่มขนาดเลขโต๊ะเป็น text-[12px] md:text-[14px] -->
+                <div style="${headerStyle}" class="text-center font-bold text-[12px] md:text-[14px] py-0.5 leading-tight border-b border-black/10">
+                    ${tNum}
                 </div>
+                <!-- 🔍 เพิ่มขนาดตัวอักษรชื่อผู้จองเป็น text-[10px] md:text-[12px] -->
                 <div style="${bodyStyle}" class="px-0.5 py-1 text-center flex-1 flex items-center justify-center overflow-hidden">
-                    <span class="text-[9px] md:text-[10px] leading-tight font-medium break-words w-full">
-                        ${safeName}
+                    <span class="text-[10px] md:text-[12px] leading-snug font-semibold break-words w-full">
+                        ${safeBodyText}
                     </span>
                 </div>
             `;
@@ -178,13 +180,12 @@
             rightGrid.innerHTML = '';
 
             const dataMap = {};
-            tableDataList.forEach(item => { dataMap[item.Table_No] = item; });
+            tableDataList.forEach(item => { if(item) dataMap[item.Table_No] = item; });
 
             for (let r = 1; r <= 10; r++) {
-                
-                // --- 1. เรนเดอร์ฝั่งซ้าย (คอลัมน์ 1 ถึง 8) ---
+                // ฝั่งซ้าย
                 const leftRowLabel = document.createElement('div');
-                leftRowLabel.className = "flex items-center justify-center font-bold text-gray-700 text-xs md:text-sm";
+                leftRowLabel.className = "flex items-center justify-center font-bold text-gray-700 text-sm md:text-base";
                 leftRowLabel.innerText = r;
                 leftGrid.appendChild(leftRowLabel);
 
@@ -199,9 +200,9 @@
                     createCard(leftGrid, tNum, dataMap);
                 }
 
-                // --- 2. เรนเดอร์ฝั่งขวา (คอลัมน์ 9 ถึง 15) ---
+                // ฝั่งขวา
                 const rightRowLabel = document.createElement('div');
-                rightRowLabel.className = "flex items-center justify-center font-bold text-gray-700 text-xs md:text-sm";
+                rightRowLabel.className = "flex items-center justify-center font-bold text-gray-700 text-sm md:text-base";
                 rightRowLabel.innerText = r;
                 rightGrid.appendChild(rightRowLabel);
 
@@ -218,7 +219,21 @@
             }
         }
 
-        // 🖱️ ฟังก์ชัน Tooltip
+        // 🔄 ดึงข้อมูลจาก Google Apps Script API
+        async function fetchTableData() {
+            if (!GAS_API_URL) return;
+            try {
+                const response = await fetch(GAS_API_URL);
+                const json = await response.json();
+                if (json.status === "success") {
+                    renderGrids(json.data);
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+
+        // Tooltip & Modal Functions
         const tooltip = document.getElementById('table-tooltip');
 
         function showTooltip(e, table) {
@@ -248,39 +263,19 @@
             let x = e.clientX + 15;
             let y = e.clientY + 15;
 
-            if (x + tooltipWidth > window.innerWidth - 10) {
-                x = e.clientX - tooltipWidth - 10;
-            }
-            if (y + tooltipHeight > window.innerHeight - 10) {
-                y = e.clientY - tooltipHeight - 10;
-            }
+            if (x + tooltipWidth > window.innerWidth - 10) x = e.clientX - tooltipWidth - 10;
+            if (y + tooltipHeight > window.innerHeight - 10) y = e.clientY - tooltipHeight - 10;
 
             tooltip.style.left = `${x}px`;
             tooltip.style.top = `${y}px`;
         }
 
-        function hideTooltip() {
-            tooltip.classList.add('hidden');
-        }
-
-        async function fetchTableData() {
-            if (!GAS_API_URL) return;
-            try {
-                const response = await fetch(GAS_API_URL);
-                const json = await response.json();
-                if (json.status === "success") {
-                    renderGrids(json.data);
-                }
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        }
+        function hideTooltip() { tooltip.classList.add('hidden'); }
 
         function openModal(table) {
             hideTooltip();
             const customerName = (table.Customer_Name || table.Note || '').trim();
             const safeTableNo = escapeHtml(table.Table_No);
-            
             const computedStatus = customerName !== '' ? 'จองแล้ว' : (table.Status && table.Status !== 'Available' ? table.Status : 'ว่าง');
             
             const safeStatus = escapeHtml(computedStatus);
@@ -288,7 +283,6 @@
 
             document.getElementById('modal-title').innerText = `รายละเอียด โต๊ะหมายเลข ${safeTableNo}`;
             const body = document.getElementById('modal-body');
-            
             const statusColorClass = computedStatus === 'จองแล้ว' ? 'text-emerald-700 font-bold' : 'text-gray-500';
 
             body.innerHTML = `
@@ -298,11 +292,10 @@
             document.getElementById('table-modal').classList.remove('hidden');
         }
 
-        function closeModal() {
-            document.getElementById('table-modal').classList.add('hidden');
-        }
+        function closeModal() { document.getElementById('table-modal').classList.add('hidden'); }
 
-        renderGrids();
+        // เริ่มต้นการทำงาน
+        renderGrids([]);
         fetchTableData();
         setInterval(fetchTableData, 5000);
     </script>
